@@ -14,9 +14,12 @@ public class Main {
 
     public static double calcularArea(int diametro){
         double pi=3.14;
-        double area=pi*diametro*diametro/4;
+        double area=pi*(diametro/1000)*(diametro/1000)/4;
         return area;
     }
 
-    
+    public static  double calcularResistencia(double resistividad, double area, double longitud){
+        double resistencia =resistividad*longitud/area;
+        return resistencia;
+    }
 }
