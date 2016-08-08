@@ -9,10 +9,11 @@ public class Main {
         int diametro= 1;
         double resistividadCobre=1.78e-8;
         double resistividadSilicio=2300;
-        System.out.println("resistividadCobre = " + resistividadCobre);
+        int corriente =25;
+
 
         double area=calcularArea(diametro);
-        calcularResistencia(resistividadCobre,area,longitud);
+        calcularTension(calcularResistencia(resistividadCobre,area,longitud),corriente);
         calcularResistencia(resistividadSilicio,area,longitud);
 
     }
@@ -28,5 +29,11 @@ public class Main {
         double resistencia =resistividad*longitud/area;
         System.out.println("La resistencia del cable es: " + resistencia);
         return resistencia;
+    }
+
+    public static double calcularTension(double resistencia, double corriente){
+        double tension = resistencia * corriente;
+        System.out.println("La tension que pasa por el cable es de: " + tension);
+        return tension;
     }
 }
