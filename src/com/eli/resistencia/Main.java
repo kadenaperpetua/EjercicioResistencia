@@ -10,6 +10,8 @@ public class Main {
         double resistividadCobre=1.78e-8;
         double resistividadSilicio=2300;
 
+
+
     }
 
     public static double calcularArea(int diametro){
@@ -20,6 +22,7 @@ public class Main {
 
     public static  double calcularResistencia(double resistividad, double area, double longitud){
         double resistencia =resistividad*longitud/area;
+        System.out.println("La resistencia del cable es: " + resistencia);
         return resistencia;
     }
 }
