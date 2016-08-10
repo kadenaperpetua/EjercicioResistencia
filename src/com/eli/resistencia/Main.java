@@ -3,40 +3,42 @@ package com.eli.resistencia;
 public class Main {
 
     public static void main(String[] args) {
+        int longitud = 1; // m
+        int diametro = 1; // mm
+        double resistividadCobre = 1.78e-8;
+        double resistividadSilicio = 2300;
+        int corriente = 25; //A
 
-	// write your code here
-        int longitud= 1;
-        int diametro= 1;
-        double resistividadCobre=1.78e-8;
-        double resistividadSilicio=2300;
-        int corriente =25;
+        double area = calcularArea(diametro);
+        double resistenciaDelCobre = calcularResistencia(resistividadCobre, area, longitud);
+        double tensionElectricaEnElCobre = calcularTension(resistenciaDelCobre, corriente);
+        imprimirResultados("cobre", resistenciaDelCobre, tensionElectricaEnElCobre);
 
-
-        double area=calcularArea(diametro);
-        System.out.println("Para el cobre:");
-        calcularTension(calcularResistencia(resistividadCobre,area,longitud),corriente);
-        System.out.println();
-        System.out.println("Para el silicio:");
-        calcularTension(calcularResistencia(resistividadSilicio,area,longitud),corriente);
-
+        double resistenciaDelSilicio = calcularResistencia(resistividadSilicio, area, longitud);
+        double tensionElectricaEnElSilicio = calcularTension(resistenciaDelSilicio, corriente);
+        imprimirResultados("silicio", resistenciaDelSilicio, tensionElectricaEnElSilicio);
     }
 
-    public static double calcularArea(int diametro){
-        double area=Math.PI*diametro*diametro/4e6;  // diametro en m= d/1000, por lo tanto area = pi*(d/1000)^2/4 =pi*d^2/40000000
-        //System.out.println("area = " + area);
+    public static double calcularArea(int diametro) {
+        double area = Math.PI * diametro * diametro / 4e6;  // diametro en m= d/1000, por lo tanto area = pi*(d/1000)^2/4 =pi*d^2/40000000
         return area;
-
     }
 
-    public static  double calcularResistencia(double resistividad, double area, double longitud){
-        double resistencia =resistividad*longitud/area;
-        System.out.println("La resistencia del cable es: " + resistencia + " ohm");
+    public static double calcularResistencia(double resistividad, double area, double longitud) {
+        double resistencia = resistividad * longitud / area;
         return resistencia;
     }
 
-    public static double calcularTension(double resistencia, double corriente){
+    public static double calcularTension(double resistencia, double corriente) {
         double tension = resistencia * corriente;
-        System.out.println("La tension electrica del cable es de: " + tension + " V");
         return tension;
     }
+
+    public static void imprimirResultados(String material, double resistenciaDelMaterial, double tensionEnElMaterial) {
+        System.out.println("Para el " + material + ": ");
+        System.out.println("La resistencia del cable es: " + resistenciaDelMaterial + " ohm");
+        System.out.println("La tension electrica del cable es de: " + tensionEnElMaterial + " V");
+        System.out.println();
+    }
+
 }
