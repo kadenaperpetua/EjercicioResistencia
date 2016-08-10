@@ -20,7 +20,7 @@ public class Main {
     }
 
     public static double calcularArea(int diametro) {
-        double area = Math.PI * diametro * diametro / 4e6;  // diametro en m= d/1000, por lo tanto area = pi*(d/1000)^2/4 =pi*d^2/40000000
+        double area = Math.PI * diametro * diametro / 4e7;  // transformar diametro a metros =d/1000 >> por lo tanto area = pi*(d/1000)^2 / 4 =pi*d^2/40000000
         return area;
     }
 
@@ -40,5 +40,4 @@ public class Main {
         System.out.println("La tension electrica del cable es de: " + tensionEnElMaterial + " V");
         System.out.println();
     }
-
 }
